@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeesListComponent } from './component/employees-list/employees-list.component';
 
 const routes: Routes = [
+  { path:'', component: EmployeesListComponent },
   { path:'employees', component: EmployeesListComponent }
 ];
 
