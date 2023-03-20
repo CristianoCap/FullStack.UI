@@ -15,7 +15,7 @@
       <button class="btn btn-lg btn-dark btn-block" type="submit" [disabled]="!userForm.valid">Sign in</button>
     </div>
   </form>
-  <div *ngIf="errorFlag" [ngClass]="'error'">
+  <div *ngIf="invalidLogin" [ngClass]="'error'">
     <app-error></app-error>
   </div>
 </div>

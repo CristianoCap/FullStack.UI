@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,19 +13,24 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
     stayRegister: new FormControl(false)
   });
-  errorFlag = false;
-  errorMessage = '';
+  invalidLogin = false;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    if (this.userForm.get('username').value !== 'criacap' || this.userForm.get('password').value !== 'test') {
-      this.errorFlag = true;
+    if (this.userForm.get('username').value === 'criacap' && this.userForm.get('password').value === 'test') {
+
+      // REDIRECT TO WELCOME PAGE
+      this.router.navigate(['toDoList', this.userForm.get('username').value]);
+      this.invalidLogin = false;
     } else {
-      this.errorFlag = false;
+      this.invalidLogin = true;
+
     }
   }
 

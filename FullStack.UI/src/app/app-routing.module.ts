@@ -8,9 +8,10 @@ import { ToDoListComponent } from './component/to-do-list/to-do-list.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'toDoList', component: ToDoListComponent },
-  { path: 'toDoForm', component: ToDoFormComponent},
-  { path: 'login', component: LoginComponent},
-  { path: '**', component: ErrorComponent}
+  { path: 'toDoList/:username', component: ToDoListComponent },
+  { path: 'toDoForm', component: ToDoFormComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({
