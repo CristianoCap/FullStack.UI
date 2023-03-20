@@ -1,0 +1,21 @@
+<div class="container">
+  <form class="form-signin" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <h1>Please sign in</h1>
+
+      <label for="username" class="sr-only">UserName</label>
+      <input type="string" id="username" formControlName="username" class="form-control" placeholder="Email address">
+
+      <label for="password" class="sr-only">Password</label>
+      <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password">
+
+      <div class="checkbox mb-3">
+        <label><input type="checkbox" value="remember-me"> Remember me</label>
+      </div>
+      <button class="btn btn-lg btn-dark btn-block" type="submit" [disabled]="!userForm.valid">Sign in</button>
+    </div>
+  </form>
+  <div *ngIf="errorFlag" [ngClass]="'error'">
+    <app-error></app-error>
+  </div>
+</div>

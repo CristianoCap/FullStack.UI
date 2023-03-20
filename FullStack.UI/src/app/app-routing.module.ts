@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EmployeesListComponent } from './component/employees-list/employees-list.component';
+import { ErrorComponent } from './component/error/error.component';
+import { LoginComponent } from './component/login/login.component';
+import { ToDoFormComponent } from './component/to-do-form/to-do-form.component';
+import { ToDoListComponent } from './component/to-do-list/to-do-list.component';
 
 const routes: Routes = [
-  { path:'', component: EmployeesListComponent },
-  { path:'employees', component: EmployeesListComponent }
+  { path: '', component: LoginComponent },
+  { path: 'toDoList', component: ToDoListComponent },
+  { path: 'toDoForm', component: ToDoFormComponent},
+  { path: 'login', component: LoginComponent},
+  { path: '**', component: ErrorComponent}
 ];
 
 @NgModule({
