@@ -1,1 +1,48 @@
-<p>to-do-form works!</p>
+<form class="form-signin" [formGroup]="toDoToEdit" (ngSubmit)="onSubmit()">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Importance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <input
+              type="text"
+              id="name"
+              class="form-control"
+              formControlName="name"
+              [placeholder]='toDoReceivedInForm.name'
+            >
+          </td>
+        <td>
+          <input
+            type="text"
+            id="description"
+            class="form-control"
+            formControlName="description"
+            [placeholder]='toDoReceivedInForm.description'
+          >
+        </td>
+        <td>
+          <input
+            type="date"
+            id="date"
+            class="form-control"
+            formControlName="date"
+          >
+        </td>
+        <td>
+          <div>
+
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-lg btn-dark btn-block" type="submit" [disabled]="!toDoToEdit.valid">Ok</button>
+</form>

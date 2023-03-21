@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToDo, toDoListStatic } from 'src/app/model/to-do.model';
+import { ToDoService } from 'src/app/services/to-do.service';
 
 @Component({
   selector: 'app-to-do-list',
@@ -8,17 +9,35 @@ import { ToDo, toDoListStatic } from 'src/app/model/to-do.model';
   styleUrls: ['./to-do-list.component.scss']
 })
 export class ToDoListComponent implements OnInit {
+  // LOCAL Variable
   toDoList: ToDo[] = [];
   username = '';
 
+  // TRUE VARIABLES
+  enableEdit = false;
+
+
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toDoService: ToDoService
   ) { }
 
   ngOnInit(): void {
-    this.toDoList = toDoListStatic;
-    console.log(toDoListStatic[0].date);
+    for( let toDo of toDoListStatic) {
+      if (!toDo.done) {
+        this.toDoList.push(toDo)
+      }
+    }
+    // console.log(this.toDoList)
+    // console.log(toDoListStatic[0].date);
     this.username = this.route.snapshot.params['username'];
   }
 
+  showToDoForm(toDoToEdit: ToDo, index) {
+    this.toDoService.set(toDoToEdit);
+    this.toDoService.setToDoIndex(index);
+    // console.log(toDoToEdit)
+    this.enableEdit = true;
+  }
 }
+

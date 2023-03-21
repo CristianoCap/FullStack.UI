@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms'
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -16,14 +17,15 @@ export class LoginComponent implements OnInit {
   invalidLogin = false;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    if (this.userForm.get('username').value === 'criacap' && this.userForm.get('password').value === 'test') {
+    if (this.authService.authenticate(this.userForm.get('username').value,this.userForm.get('password').value)) {
 
       // REDIRECT TO WELCOME PAGE
       this.router.navigate(['toDoList', this.userForm.get('username').value]);
