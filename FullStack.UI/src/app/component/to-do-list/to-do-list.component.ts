@@ -45,8 +45,17 @@ export class ToDoListComponent implements OnInit {
     console.log($event);
     console.log('**ToDoListComponent -> enableForm -> this.toDoService.get()')
     console.log(this.toDoService.get())
-
+    this.changeToDoEdited();
     this.enableEdit = $event;
+  }
+
+  changeToDoEdited(){
+    // console.log('**to-do-list.component.ts -> changeToDoEdited() -> B - let index = this.toDoService.getToDoIndex()')
+    let index = this.toDoService.getToDoIndex()
+    // console.log('index: ' + index);
+    this.toDoList[index] = this.toDoService.get();
+    // console.log('this.toDoList[index]: ');
+    // console.log(this.toDoList[index]);
   }
 }
 

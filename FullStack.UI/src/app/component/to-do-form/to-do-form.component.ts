@@ -45,10 +45,10 @@ export class ToDoFormComponent implements OnInit {
 
   // START STUF DROPDOWN
   dropdownValueChanged($event: any) {
-    console.log('**ToDoFormComponent -> dropdownValueChanged -> $event.name')
+    //console.log('**ToDoFormComponent -> dropdownValueChanged -> $event.name')
     // console.log($event.name);
     this.toDoToEdit.controls['importance'].setValue($event.name);
-    console.log('**ToDoFormComponent -> dropdownValueChanged -> this.toDoToEdit')
+    // console.log('**ToDoFormComponent -> dropdownValueChanged -> this.toDoToEdit')
     // console.log(this.toDoToEdit);
   }
   dropdownSetOptions() : any{
