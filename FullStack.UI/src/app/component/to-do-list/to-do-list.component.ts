@@ -39,5 +39,14 @@ export class ToDoListComponent implements OnInit {
     // console.log(toDoToEdit)
     this.enableEdit = true;
   }
+
+  closeToDoForm($event: any) {
+    console.log('**ToDoListComponent -> enableForm -> $event')
+    console.log($event);
+    console.log('**ToDoListComponent -> enableForm -> this.toDoService.get()')
+    console.log(this.toDoService.get())
+
+    this.enableEdit = $event;
+  }
 }
 

@@ -13,6 +13,7 @@ import { LogoutComponent } from './component/logout/logout.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ToDoDoneComponent } from './component/to-do-done/to-do-done.component';
 import { ToDoFormComponent } from './component/to-do-form/to-do-form.component';
+import { SelectComponent } from './component/shared/select/select.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ToDoFormComponent } from './component/to-do-form/to-do-form.component';
     LogoutComponent,
     ToDoDoneComponent,
     ToDoFormComponent,
+    SelectComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,4 +24,4 @@
   </table>
 </div>
 
-<app-to-do-form *ngIf="enableEdit" [toDoReceivedInForm]="toDoToEdit" [index]="index"></app-to-do-form>
+<app-to-do-form *ngIf="enableEdit" (editEnable)="closeToDoForm($event)"></app-to-do-form>

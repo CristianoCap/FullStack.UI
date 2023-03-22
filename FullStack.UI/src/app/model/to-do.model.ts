@@ -6,9 +6,7 @@ export interface ToDo {
   importance: Importance;
 }
 
-
-
-const enum Importance {
+export const enum Importance {
   Low = 'Low',
   Medium = 'Medium',
   High = 'High'

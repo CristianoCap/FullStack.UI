@@ -38,7 +38,9 @@
         </td>
         <td>
           <div>
-
+            <app-select
+            [title]="'Select Importance'" [options]="dropdownSetOptions()" (currentValueChange)="dropdownValueChanged($event)"
+            ></app-select>
           </div>
         </td>
       </tr>
