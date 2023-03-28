@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ToDo, toDoListStatic } from 'src/app/model/to-do.model';
+import { ToDo} from 'src/app/model/to-do.model';
+import { HttpService, WorldHello } from 'src/app/services/http.service';
 import { ToDoService } from 'src/app/services/to-do.service';
 
 @Component({
@@ -19,15 +20,12 @@ export class ToDoListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private toDoService: ToDoService
+    private toDoService: ToDoService,
+    private httpService: HttpService
   ) { }
 
   ngOnInit(): void {
-    for( let toDo of toDoListStatic) {
-      if (!toDo.done) {
-        this.toDoList.push(toDo)
-      }
-    }
+    this.getToDosListFromHttpService()
     // console.log(this.toDoList)
     // console.log(toDoListStatic[0].date);
     this.username = this.route.snapshot.params['username'];
@@ -57,5 +55,17 @@ export class ToDoListComponent implements OnInit {
     // console.log('this.toDoList[index]: ');
     // console.log(this.toDoList[index]);
   }
-}
 
+  getToDosListFromHttpService() {
+    // console.log(this.httpService.executeHelloWorldBeanService().subscribe());
+    this.httpService.getToDoList().subscribe(
+      (response: ToDo[]) => {
+        this.toDoList = response;
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+}

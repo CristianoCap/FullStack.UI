@@ -16,12 +16,13 @@
         <td>{{ toDo.name }}</td>
         <td>{{ toDo.description }}</td>
         <td>{{ toDo.date | date}}</td>
-        <td><button type="button" class="btn btn-success">Done</button></td>
+        <td><button type="button" class="btn btn-success" [disabled]="toDo.done">Done</button></td>
         <td><button type="button" class="btn btn-dark" (click)="showToDoForm(toDoList[i], i)">Edit</button></td>
         <td>{{ toDo.importance }}</td>
       </tr>
     </tbody>
   </table>
 </div>
+<div class="container"><button class="btn btn-success" (click)="getToDosListFromHttpService()">Change Welcome</button></div>
 
 <app-to-do-form *ngIf="enableEdit" (editEnable)="closeToDoForm($event)"></app-to-do-form>
